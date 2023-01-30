@@ -1,0 +1,2 @@
+{"first_name":"Bernard","last_name":"Ansah","phone":"345678"}
+{"first_name":"Kwame","last_name":"Ofori","phone":"0987323456"}
