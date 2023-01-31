@@ -21,7 +21,6 @@ class DeleteContact
             print "Phone: " 
             puts address_txt_json["phone"]
             puts
-
         }
     end
     

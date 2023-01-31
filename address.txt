@@ -1,2 +1,6 @@
-{"first_name":"Bernard","last_name":"Ansah","phone":"345678"}
-{"first_name":"Kwame","last_name":"Ofori","phone":"0987323456"}
+{"first_name":"Bernard","last_name":"Ansah","phone":"173563447"}
+{"first_name":"Kwabena","last_name":"Owusu","phone":"2345678990"}
+{"first_name":"Ofori","last_name":"Oppong","phone":"12372902098"}
+{"first_name":"kofi","last_name":"addy","phone":"0540343089"}
+{"first_name":"sdfghjk","last_name":"zxcvbnm","phone":"34567474789"}
+{"first_name":"asdfgh","last_name":"qwertyui","phone":"1234567"}

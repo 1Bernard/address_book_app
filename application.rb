@@ -2,6 +2,6 @@ require './menu'
 
 class Application 
   def self.run
-    main_menu = Menu.new.run
+    Menu.new.run
   end
 end

@@ -1,7 +1,7 @@
-require './addContact'
-require './editContact'
-require './viewContact'
-require './deleteContact'
+require './add_contact'
+require './edit_contact'
+require './view_contact'
+require './delete_contact'
 
 class Menu
   def initialize
@@ -21,13 +21,21 @@ class Menu
     puts
 
     case menu_user_choice
-    when '1' then @menu_command.add_contact
-    when '2' then @menu_command.edit_contact
-    when '3' then @menu_command.view_contact
-    when '4' then @menu_command.delete_contact
+    when '1'
+      # @menu_command.add_contact
+      AddContact.run
+    when '2' 
+      # @menu_command.edit_contact
+      EditContact.run
+    when '3'
+      # @menu_command.view_contact
+      ViewContact.run
+    when '4'
+      # @menu_command.delete_contact
+      DeleteContact.run
     else
       puts "Invalid input (Option should range from 1-4)"
-      main_menu = Menu.new.run  
+        Menu.new.run  
     end
   end
  
@@ -36,18 +44,18 @@ end
 class Command
 
   def add_contact
-    add_contact_user = AddContact.run
+    AddContact.run
   end
 
   def edit_contact
-    edit_contact_user = EditContact.new.run
+    EditContact.run
   end
 
   def view_contact
-    view_contact_user = ViewContact.new.run
+    ViewContact.run
   end
 
   def delete_contact
-    delete_contact_user = DeleteContact.new.run
+    DeleteContact.new.run
   end
 end
