@@ -22,16 +22,12 @@ class Menu
 
     case menu_user_choice
     when '1'
-      # @menu_command.add_contact
       AddContact.run
     when '2' 
-      # @menu_command.edit_contact
       EditContact.run
     when '3'
-      # @menu_command.view_contact
       ViewContact.run
     when '4'
-      # @menu_command.delete_contact
       DeleteContact.run
     else
       puts "Invalid input (Option should range from 1-4)"

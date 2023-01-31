@@ -1,7 +1,8 @@
 require './menu'
+require 'json'
 
 class DeleteContact
-    def run
+    def self.run
         puts " Delete Contact ".center(50, "#")
         puts
         address_display
@@ -9,7 +10,7 @@ class DeleteContact
         address_delete
     end
     
-    def address_display
+    def self.address_display
         address_txt = File.open("address.txt", "r")
         address_txt.each_with_index { |item, index|
           address_txt_json = JSON.parse(item)
@@ -24,35 +25,29 @@ class DeleteContact
         }
     end
     
-    def address_delete
-        entries = [@address_txt]
-        if entries.empty?
-        puts "No Enteries Found".center(50, "-")
-        end
-        if entries.length > 0
-        print "Enter index to delete: "
-        @index = gets.chomp.to_i
-        address_fetch = entries.fetch(@index-1)
+    def self.address_delete
+        print "Select index to delete contact: "
+        input = gets.chomp.to_i
         puts
-        puts "Do you want to delete contact?"
-        puts
-        puts "1. Yes"
+        all_contacts = IO.readlines("address.txt")
+        selected_contact = all_contacts[input-1]
+        found_contact = JSON.parse(selected_contact)
+        puts "Are you sure you want to delete #{found_contact["first_name"]} #{found_contact["last_name"]}"
+        puts "1. Yes" 
         puts "2. No"
-        print "Select option to delete: "
-        option = gets.chomp
-
+        puts
+        print "Select from options above: "
+        option = gets.chomp.to_i
         case option
-        when '1' then
-            address_txt_lines = File.readlines("address.txt")
-            puts "Contact Deleted".center(50, "-")
-            address_txt_lines.pop(@index)
-
-        when '2' then main_menu = Menu.new.run
-        else
-        puts "Invalid input"
-        puts main_menu = Menu.new.run  
-        end
-
+            when 1
+                all_contacts.delete(selected_contact)
+                # update_contacts(all_contacts)
+                puts " Contact deleted ".center(50, "-")
+                puts Menu.new.run
+            when 2
+                puts Menu.new.run
+            else
+                puts "Invalid Option"
+        end    
     end
 end    
-end

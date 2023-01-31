@@ -16,7 +16,7 @@ class EditContact
             option_back = gets.chomp
             puts
             case option_back
-            when '00' then main_menu = Menu.new.run
+            when '00' then Menu.new.run
             else
                 puts "Invalid input"  
             end
@@ -29,7 +29,7 @@ class EditContact
 
     def self.address_display
         address_txt = File.open("address.txt", "r")
-        @address_list_index = address_txt.each_with_index { |item, index|
+        address_txt.each_with_index { |item, index|
           address_txt_json = JSON.parse(item)
             puts "#{index+1}."
             print "First Name: "
@@ -44,14 +44,15 @@ class EditContact
         
     end
 
-    def address_update
-        print "Enter index to delete: "
-        @index = gets.chomp.to_i
-
-        address_txt = File.open("address.txt", "r")
-        entries = @address_list_index
-
-         
+    def self.address_update
+        print "Select index to edit: "
+        input = gets.chomp.to_i
+        all_contacts = IO.readlines("address.txt")
+        selected_contact = all_contacts[input-1]
+        found_contact = JSON.parse(selected_contact)
+        found_contact = JSON.parse(selected_contact)
+        puts "Are you sure you want to edit #{found_contact["first_name"]} #{found_contact["last_name"]}"
+        
     end    
         
 end

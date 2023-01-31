@@ -36,10 +36,10 @@ class AddContact
     puts
 
     case option_back
-    when '00' then main_menu = Menu.new.run
+    when '00' then Menu.new.run
     else
       puts "Invalid input" 
-      puts main_menu = Menu.new.run 
+      puts Menu.new.run 
     end
 
   end
