@@ -50,9 +50,23 @@ class EditContact
         all_contacts = IO.readlines("address.txt")
         selected_contact = all_contacts[input-1]
         found_contact = JSON.parse(selected_contact)
-        found_contact = JSON.parse(selected_contact)
-        puts "Are you sure you want to edit #{found_contact["first_name"]} #{found_contact["last_name"]}"
+        puts "Edit #{found_contact["first_name"]} #{found_contact["last_name"]}"
+        @user_input_store = {}
+        puts
+        print "Enter first name: "
+        first_name_update = gets.chomp
+        print "Enter Last name: "
+        last_name_update = gets.chomp
+        print "Enter phone number for #{first_name_update} #{last_name_update}: "
+        phone_update = gets.chomp
+
+        @user_input_store[:first_name]=first_name_update
+        @user_input_store[:last_name]=last_name_update
+        @user_input_store[:phone]=phone_update
+
+        # Edit old contact with new contact code here
         
+        puts " Contact successfully edited ".center(50, "-")
     end    
         
 end
