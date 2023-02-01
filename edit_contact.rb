@@ -45,28 +45,35 @@ class EditContact
     end
 
     def self.address_update
-        print "Select index to edit: "
-        input = gets.chomp.to_i
         all_contacts = IO.readlines("address.txt")
-        selected_contact = all_contacts[input-1]
-        found_contact = JSON.parse(selected_contact)
-        puts "Edit #{found_contact["first_name"]} #{found_contact["last_name"]}"
-        @user_input_store = {}
-        puts
-        print "Enter first name: "
-        first_name_update = gets.chomp
-        print "Enter Last name: "
-        last_name_update = gets.chomp
-        print "Enter phone number for #{first_name_update} #{last_name_update}: "
-        phone_update = gets.chomp
-
-        @user_input_store[:first_name]=first_name_update
-        @user_input_store[:last_name]=last_name_update
-        @user_input_store[:phone]=phone_update
-
-        # Edit old contact with new contact code here
+        if all_contacts.empty?
+            puts " No Enteries In Your Contact List. Add Contact ".center(50, "-")
+            puts Menu.new.run
+          end
+        if all_contacts.length > 0
+            print "Select index to edit: "
+            input = gets.chomp.to_i
+            all_contacts = IO.readlines("address.txt")
+            selected_contact = all_contacts[input-1]
+            found_contact = JSON.parse(selected_contact)
+            puts "Editing #{found_contact["first_name"]} #{found_contact["last_name"]} From Contact List"
+            @user_input_store = {}
+            puts
+            print "Enter first name: "
+            first_name_update = gets.chomp
+            print "Enter Last name: "
+            last_name_update = gets.chomp
+            print "Enter phone number for #{first_name_update} #{last_name_update}: "
+            phone_update = gets.chomp
+    
+            @user_input_store[:first_name]=first_name_update
+            @user_input_store[:last_name]=last_name_update
+            @user_input_store[:phone]=phone_update
+    
+            # Edit old contact with new contact code here
+            puts " Contact successfully edited ".center(50, "-")
         
-        puts " Contact successfully edited ".center(50, "-")
+        end  
     end    
         
 end
